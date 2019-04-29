@@ -27,17 +27,18 @@ def checkRecord():
     try:
         f = open("wordTyperRecord.txt", "r")
         currentRecord = f.read()
+        if(len(currentRecord) < 1):
+                record = 0
+                print("No record exists yet!")
+        else:
+                currentRecordList = currentRecord.split(":")
+                currentRecordNum = float(currentRecordList[0])
+                currentRecordHolder = currentRecordList[1]
+                print("Current record:", str(currentRecordNum) + " WPM by:", currentRecordHolder)
     except FileNotFoundError:
         f = open("wordTyperRecord.txt", "w")
         f.close()
-
-    if(len(currentRecord) < 1):
-        record = 0
-    else:
-        currentRecordList = currentRecord.split(":")
-        currentRecordNum = float(currentRecordList[0])
-        currentRecordHolder = currentRecordList[1]
-        print("Current record:", str(currentRecordNum) + " WPM by", currentRecordHolder)
+        print("No record exists yet!")
 
 def main():
     game = 'y'
